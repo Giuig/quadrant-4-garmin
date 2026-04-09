@@ -256,8 +256,8 @@ class Quadrant4MenuDelegate extends WatchUi.Menu2InputDelegate {
             var vibeEnabled = Storage.getValue("vibe_enabled");
             if (soundEnabled == null) { soundEnabled = true; }
             if (vibeEnabled == null) { vibeEnabled = true; }
-            sMenu.addItem(new WatchUi.ToggleMenuItem("Sound", null, "sound", soundEnabled, {:icon => new SpeakerIcon()}));
-            sMenu.addItem(new WatchUi.ToggleMenuItem("Vibration", null, "vibration", vibeEnabled, {:icon => new VibesIcon()}));
+            sMenu.addItem(new WatchUi.ToggleMenuItem("Sound", null, "sound", soundEnabled, {:icon => new GearIcon()}));
+            sMenu.addItem(new WatchUi.ToggleMenuItem("Vibration", null, "vibration", vibeEnabled, {:icon => new GearIcon()}));
             WatchUi.pushView(sMenu, new Quadrant4SettingsDelegate(), WatchUi.SLIDE_IMMEDIATE);
         } else if (id.equals("about")) {
             WatchUi.pushView(new CreditsView(), new WatchUi.BehaviorDelegate(), WatchUi.SLIDE_UP);
@@ -322,28 +322,5 @@ class InfoIcon extends WatchUi.Drawable {
         var cx = dc.getWidth() / 2; var cy = dc.getHeight() / 2;
         dc.setPenWidth(2); dc.drawCircle(cx, cy, 14);
         dc.drawText(cx, cy, Graphics.FONT_XTINY, "i", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-    }
-}
-
-class SpeakerIcon extends WatchUi.Drawable {
-    function initialize() { Drawable.initialize({}); }
-    function draw(dc) {
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE); dc.clear();
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-        var cx = dc.getWidth() / 2; var cy = dc.getHeight() / 2;
-        dc.fillPolygon([[cx-8, cy-4], [cx-8, cy+4], [cx-4, cy+4], [cx-4, cy+8], [cx+4, cy], [cx-4, cy-8], [cx-4, cy-4]]);
-    }
-}
-
-class VibesIcon extends WatchUi.Drawable {
-    function initialize() { Drawable.initialize({}); }
-    function draw(dc) {
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE); dc.clear();
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-        var cx = dc.getWidth() / 2; var cy = dc.getHeight() / 2;
-        dc.setPenWidth(2);
-        dc.drawLine(cx - 6, cy - 6, cx + 6, cy + 6);
-        dc.drawLine(cx - 6, cy + 6, cx + 6, cy - 6);
-        dc.drawCircle(cx, cy, 10);
     }
 }
