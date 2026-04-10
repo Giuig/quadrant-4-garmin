@@ -11,4 +11,4 @@ A memory game for Garmin watches. Watch the sequence and repeat it back. Each ro
 
 ## Version
 
-2.0.0
+1.0.1
